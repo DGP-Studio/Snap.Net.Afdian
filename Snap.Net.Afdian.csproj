@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Snap.Core.Logging\Snap.Core.Logging.csproj" />
+    <ProjectReference Include="..\Snap.Data.Json\Snap.Data.Json.csproj" />
+    <ProjectReference Include="..\Snap.Data.Utility\Snap.Data.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
