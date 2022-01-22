@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".git" />
+    <None Remove=".gitignore" />
+    <None Remove="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Snap.Core.Logging\Snap.Core.Logging.csproj" />
     <ProjectReference Include="..\Snap.Data.Json\Snap.Data.Json.csproj" />
     <ProjectReference Include="..\Snap.Data.Utility\Snap.Data.Utility.csproj" />
