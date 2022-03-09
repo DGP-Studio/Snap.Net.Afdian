@@ -1,7 +1,6 @@
 ﻿using Snap.Core.Logging;
 using Snap.Data.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -38,9 +37,9 @@ namespace Snap.Net.Afdian
 
             HttpClient client = LazyHttpClient.Value;
             client.DefaultRequestHeaders.Clear();
-            foreach (KeyValuePair<string, string> entry in Headers)
+            foreach ((string name, string value) in Headers)
             {
-                client.DefaultRequestHeaders.Add(entry.Key, entry.Value);
+                client.DefaultRequestHeaders.Add(name, value);
             }
             info = requestFunc(client);
             try
