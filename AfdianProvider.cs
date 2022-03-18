@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Snap.Net.Afdian
 {
@@ -20,22 +21,22 @@ namespace Snap.Net.Afdian
             Token = token;
         }
 
-        public async Task<string?> PingAsync()
+        public async Task<string?> PingAsync(CancellationToken cancellationToken = default)
         {
             RequestData body = RequestData.Create(UserId, Token);
-            return await requester.PostAsync<string>($"{ApiBaseUrl}/ping", body);
+            return await requester.PostAsync<string>($"{ApiBaseUrl}/ping", body, cancellationToken);
         }
 
-        public async Task<Response<ListWrapper<Order>>?> QueryOrderAsync(int pageNumber)
+        public async Task<Response<ListWrapper<Order>>?> QueryOrderAsync(int pageNumber, CancellationToken cancellationToken = default)
         {
             RequestData body = RequestData.CreateWithPage(UserId, Token, pageNumber);
-            return await requester.PostAsync<Response<ListWrapper<Order>>>($"{ApiBaseUrl}/query-order", body);
+            return await requester.PostAsync<Response<ListWrapper<Order>>>($"{ApiBaseUrl}/query-order", body, cancellationToken);
         }
 
-        public async Task<Response<ListWrapper<Sponsor>>?> QuerySponsorAsync(int pageNumber)
+        public async Task<Response<ListWrapper<Sponsor>>?> QuerySponsorAsync(int pageNumber, CancellationToken cancellationToken = default)
         {
             RequestData body = RequestData.CreateWithPage(UserId, Token, pageNumber);
-            return await requester.PostAsync<Response<ListWrapper<Sponsor>>>($"{ApiBaseUrl}/query-sponsor", body);
+            return await requester.PostAsync<Response<ListWrapper<Sponsor>>>($"{ApiBaseUrl}/query-sponsor", body, cancellationToken);
         }
     }
 }
