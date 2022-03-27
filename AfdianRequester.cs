@@ -28,7 +28,7 @@ namespace Snap.Net.Afdian
 
             HttpClient client = LazyHttpClient.Value;
             client.DefaultRequestHeaders.Clear();
-            foreach ((string name, string value) in Headers)
+            foreach ((string name, string value) in this.Headers)
             {
                 client.DefaultRequestHeaders.Add(name, value);
             }
@@ -56,7 +56,7 @@ namespace Snap.Net.Afdian
         {
             string dataString = Json.Stringify(data)/*.ReplaceLineEndings(string.Empty)*/;
             this.Log($"POST {url} with\n{dataString}");
-            return url is null ? null : await Request<T>(client =>
+            return url is null ? null : await this.Request<T>(client =>
             new AfdianRequestInfo("POST", url,
                 () => client.PostAsync(url, new StringContent(dataString, Encoding.UTF8, "application/json"), cancellationToken)),
             cancellationToken);
