@@ -8,9 +8,9 @@ namespace Snap.Net.Afdian
     {
         public AfdianRequestInfo(string method, string url, Func<Task<HttpResponseMessage>> httpResponseMessage)
         {
-            this.Method = method;
-            this.Url = url;
-            this.RequestAsyncFunc = httpResponseMessage;
+            Method = method;
+            Url = url;
+            RequestAsyncFunc = httpResponseMessage;
         }
 
         public string Method { get; set; }
